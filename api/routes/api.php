@@ -15,4 +15,5 @@ use Illuminate\Http\Request;
 
 Route::group(['middleware'=>'api'], function () {
     Route::apiResource('products', 'ProductController');
+    Route::apiResource('orders', 'OrderController')->except(['update']);
 });

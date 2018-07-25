@@ -11,7 +11,14 @@ class Order extends Model
     
     protected $fillable = ["date", "total"];
 
-    public function orders() {
+    protected $hidden = ["updated_at", "pivot"];
+
+    protected $casts = [
+        'total' => 'float'
+    ];
+
+    public function products()
+    {
         return $this->belongsToMany('App\Product', 'order_product');
     }
 }

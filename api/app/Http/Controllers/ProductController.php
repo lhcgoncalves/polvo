@@ -22,7 +22,7 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::find($id);
 
         if (!$product) {
             return response()->json(['message' => 'Product not found']);
@@ -33,7 +33,7 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::find($id);
 
         if (!$product) {
             return response()->json(['message' => 'Product not found']);
@@ -44,15 +44,9 @@ class ProductController extends Controller
         return $product;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::find($id);
 
         if (!$product) {
             return response()->json(['message' => 'Product not found']);

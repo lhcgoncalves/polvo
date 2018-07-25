@@ -11,7 +11,14 @@ class Product extends Model
     
     protected $fillable = ["sku", "name", "description", "price"];
 
-    public function orders() {
+    protected $hidden = ["created_at", "updated_at", "pivot"];
+
+    protected $casts = [
+        'price' => 'float'
+    ];
+
+    public function orders()
+    {
         return $this->belongsToMany('App\Order', 'order_product');
     }
 }
